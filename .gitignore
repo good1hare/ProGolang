@@ -89,5 +89,8 @@ fabric.properties
 # vendor/
 
 !/key.pem
+/key.pem
 !/cert.pem
+/cert.pem
 !/configs/config.yaml
+/configs/config.yaml
