@@ -90,3 +90,4 @@ fabric.properties
 
 !/key.pem
 !/cert.pem
+!/configs/config.yaml
