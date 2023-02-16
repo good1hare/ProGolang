@@ -23,16 +23,20 @@ func main() {
 	updates := bot.GetUpdatesChan(u)
 
 	for update := range updates {
-		if update.Message != nil { // If we got a message
+		if update.Message != nil {
 			log.Printf("[%s] %s", update.Message.From.UserName, update.Message.Text)
 
-			msg := telegramApi.NewMessage(update.Message.Chat.ID, update.Message.Text)
-			msg.ReplyToMessageID = update.Message.MessageID
-
-			_, err := bot.Send(msg)
-			if err != nil {
-				log.Println(err)
-			}
+			respond(bot, update)
 		}
+	}
+}
+
+func respond(bot *telegramApi.BotAPI, update telegramApi.Update) {
+	msg := telegramApi.NewMessage(update.Message.Chat.ID, update.Message.Text)
+	msg.ReplyToMessageID = update.Message.MessageID
+
+	_, err := bot.Send(msg)
+	if err != nil {
+		log.Println(err)
 	}
 }
