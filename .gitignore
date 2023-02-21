@@ -94,3 +94,5 @@ fabric.properties
 /cert.pem
 !/configs/config.yaml
 /configs/config.yaml
+!/PostgresDocker/.env
+/PostgresDocker/.env!/ProGolang

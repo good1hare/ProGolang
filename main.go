@@ -2,18 +2,20 @@ package main
 
 import (
 	config "ProGolang/configs"
+	"ProGolang/handler"
 	telegramApi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"log"
 )
 
 func main() {
+	ConnectPostgres()
 
 	bot, err := telegramApi.NewBotAPI(config.GetToken())
 	if err != nil {
 		log.Panic(err)
 	}
 
-	bot.Debug = true
+	bot.Debug = false
 
 	log.Printf("Authorized on account %s", bot.Self.UserName)
 
@@ -26,17 +28,7 @@ func main() {
 		if update.Message != nil {
 			log.Printf("[%s] %s", update.Message.From.UserName, update.Message.Text)
 
-			respond(bot, update)
+			handler.Respond(bot, update)
 		}
-	}
-}
-
-func respond(bot *telegramApi.BotAPI, update telegramApi.Update) {
-	msg := telegramApi.NewMessage(update.Message.Chat.ID, update.Message.Text)
-	msg.ReplyToMessageID = update.Message.MessageID
-
-	_, err := bot.Send(msg)
-	if err != nil {
-		log.Println(err)
 	}
 }

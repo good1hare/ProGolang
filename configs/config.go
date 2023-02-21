@@ -6,8 +6,13 @@ import (
 	"log"
 )
 
+// Configs names
 type config struct {
-	BotToken string
+	BotToken             string
+	PostgresUser         string
+	PostgresPassword     string
+	PostgresDataBaseName string
+	PostgresPort         string
 }
 
 var Config config
@@ -34,6 +39,29 @@ func searchConfig() error {
 	return viper.ReadInConfig()
 }
 
+//Configs getters
+
+// GetToken get telegram bot token from config.*
 func GetToken() string {
 	return Config.BotToken
+}
+
+// GetPostgresUser get postgres user name from config.*
+func GetPostgresUser() string {
+	return Config.PostgresUser
+}
+
+// GetPostgresPassword get postgres user password from config.*
+func GetPostgresPassword() string {
+	return Config.PostgresPassword
+}
+
+// PostgresDataBaseName get postgres db name from config.*
+func PostgresDataBaseName() string {
+	return Config.PostgresDataBaseName
+}
+
+// PostgresPort get postgres db port from config.*
+func PostgresPort() string {
+	return Config.PostgresPort
 }
