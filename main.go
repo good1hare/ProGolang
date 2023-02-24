@@ -3,13 +3,13 @@ package main
 import (
 	config "ProGolang/configs"
 	"ProGolang/handler"
+	storages "ProGolang/storage"
 	telegramApi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"log"
 )
 
 func main() {
-	ConnectPostgres()
-
+	storages.Migrate()
 	bot, err := telegramApi.NewBotAPI(config.GetToken())
 	if err != nil {
 		log.Panic(err)

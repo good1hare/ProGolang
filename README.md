@@ -34,7 +34,7 @@ go run main.go
 
 ## Logging
 
-There are no easy way to configure pgadmin log verbosity and it can be overwhelming at times. It is possible to disable pgadmin logging on the container level.
+There are no easy way to configure pgadmin log verbosity, and it can be overwhelming at times. It is possible to disable pgadmin logging on the container level.
 
 Add the following to `pgadmin` service in the `docker-compose.yml`:
 

@@ -8,11 +8,14 @@ import (
 
 // Configs names
 type config struct {
-	BotToken             string
+	BotToken string
+
 	PostgresUser         string
 	PostgresPassword     string
 	PostgresDataBaseName string
+	PostgresHost         string
 	PostgresPort         string
+	PostgresSSLMode      string
 }
 
 var Config config
@@ -61,7 +64,17 @@ func PostgresDataBaseName() string {
 	return Config.PostgresDataBaseName
 }
 
+// GetPostgresHost get postgres db host from config.*
+func GetPostgresHost() string {
+	return Config.PostgresHost
+}
+
 // PostgresPort get postgres db port from config.*
 func PostgresPort() string {
 	return Config.PostgresPort
+}
+
+// PostgresSSLMode get postgres db sslmode from config.*
+func PostgresSSLMode() string {
+	return Config.PostgresSSLMode
 }
